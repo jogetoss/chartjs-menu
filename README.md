@@ -1,6 +1,7 @@
 # Description
 This bundle contains Chartjs Menu plugin. This plugin generates charts with dataset from datalist
 
+To setup and configure this plugin, please see the [documentation](https://dev.joget.org/community/display/SANDBOX2/ChartJs+Userview+Menu+Plugin). 
 # Getting Help
 
 JogetOSS is a community-led team for open source software related to the [Joget](https://www.joget.org) no-code/low-code application platform.
