@@ -1,6 +1,5 @@
 # Description
-
-This repository is meant to serve as a general template for how to set up new repositories in the JogetOSS organization. 
+This bundle contains Chartjs Menu plugin. This plugin generates charts with dataset from datalist
 
 # Getting Help
 
