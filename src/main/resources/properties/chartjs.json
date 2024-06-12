@@ -1,0 +1,363 @@
+[
+    {
+        "title": "@@org.joget.marketplace.userview.Chartjs.config@@",
+        "properties": [
+            {
+                "name": "id",
+                "label": "Id",
+                "type": "hidden"
+            },
+            {
+                "name": "customId",
+                "label": "@@org.joget.marketplace.userview.Chartjs.customId@@",
+                "type": "textfield",
+                "regex_validation": "^[a-zA-Z0-9_]+$",
+                "validation_message": "@@org.joget.marketplace.userview.Chartjs.invalidId@@"
+            },
+            {
+                "name": "label",
+                "label": "@@org.joget.marketplace.userview.Chartjs.label@@",
+                "type": "textfield",
+                "required": "True"
+            },
+            {
+                "name": "title",
+                "label": "@@org.joget.marketplace.userview.Chartjs.title@@",
+                "type": "textfield"
+            },
+
+            {
+                "name": "chartType",
+                "label": "@@userview.sqlchartmenu.chartType@@",
+                "type": "selectbox",
+                "required": "True",
+                "options": [
+                    {
+                        "value": "area",
+                        "label": "@@userview.sqlchartmenu.areaChart@@"
+                    },
+                    {
+                        "value": "bar",
+                        "label": "@@userview.sqlchartmenu.barChart@@"
+                    },
+                    {
+                        "value": "line",
+                        "label": "@@userview.sqlchartmenu.lineChart@@"
+                    },
+                    {
+                        "value": "donut",
+                        "label": "@@userview.sqlchartmenu.donutChart@@"
+                    },
+                    {
+                        "value": "pie",
+                        "label": "@@userview.sqlchartmenu.pieChart@@"
+                    },
+                    {
+                        "value": "polarArea",
+                        "label": "@@org.joget.marketplace.userview.Chartjs.polarAreaChart@@"
+                    },
+                    {
+                        "value": "radar",
+                        "label": "@@org.joget.marketplace.userview.Chartjs.radar@@"
+                    },
+                    {
+                        "value": "bubble",
+                        "label": "@@org.joget.marketplace.userview.Chartjs.bubble@@"
+                    },
+                    {
+                        "value": "scatter",
+                        "label": "@@org.joget.marketplace.userview.Chartjs.scatter@@"
+                    }
+                ]
+            },
+            {
+                "name": "chartUseAllDataRows",
+                "label": "@@org.joget.marketplace.userview.Chartjs.chartUseAllDataRows@@",
+                "type": "selectbox",
+                "value": "",
+                "options": [
+                    {
+                        "value": "",
+                        "label": "@@org.joget.marketplace.userview.Chartjs.chartUseAllDataRows.currentPage@@"
+                    },
+                    {
+                        "value": "true",
+                        "label": "@@org.joget.marketplace.userview.Chartjs.chartUseAllDataRows.all@@"
+                    }
+                ]
+            },
+            {
+                "name": "showTable",
+                "label": "@@org.joget.marketplace.userview.Chartjs.showTable@@",
+                "type": "selectbox",
+                "value": "",
+                "options": [
+                    {
+                        "value": "",
+                        "label": "@@userview.crudmenu.checkboxPosition.no@@"
+                    },
+                    {
+                        "value": "top",
+                        "label": "@@org.joget.marketplace.userview.Chartjs.showTable.top@@"
+                    },
+                    {
+                        "value": "bottom",
+                        "label": "@@org.joget.marketplace.userview.Chartjs.showTable.bottom@@"
+                    }
+                ]
+            },
+            {
+                "name": "showExportLinks",
+                "label": "@@org.joget.marketplace.userview.Chartjs.showExportLinks@@",
+                "type": "selectbox",
+                "value": "",
+                "options": [
+                    {
+                        "value": "",
+                        "label": "@@userview.crudmenu.checkboxPosition.no@@"
+                    },
+                    {
+                        "value": "true",
+                        "label": "@@dbuilder.hidden.yes@@"
+                    }
+                ],
+                "control_field": "showTable",
+                "control_value": "top|bottom",
+                "control_use_regex": "true"
+            },
+            {
+                "name": "showFilter",
+                "label": "@@org.joget.marketplace.userview.Chartjs.showFilter@@",
+                "type": "selectbox",
+                "value": "",
+                "options": [
+                    {
+                        "value": "",
+                        "label": "@@userview.crudmenu.checkboxPosition.no@@"
+                    },
+                    {
+                        "value": "true",
+                        "label": "@@dbuilder.hidden.yes@@"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "title": "@@org.joget.marketplace.userview.Chartjs.mapping@@",
+        "properties": [
+            {
+                "name": "datalistId",
+                "label": "@@userview.crudmenu.listId@@",
+                "type": "selectbox",
+                "required": "true",
+                "options_ajax": "[CONTEXT_PATH]/web/json/console/app[APP_PATH]/datalist/options"
+            },
+            {
+                "name": "mapping_x",
+                "label": "@@userview.sqlchartmenu.mapping.x-axis@@",
+                "type": "selectbox",
+                "options_ajax_on_change": "id:datalistId",
+                "options_ajax": "[CONTEXT_PATH]/web/json/app[APP_PATH]/plugin/org.joget.marketplace.ChartJs/service?action=getDatalistColumns",
+                "options_ajax_method": "POST",
+                "control_field": "chartType",
+                "control_value": "bar|area|bubble|line|donut|pie|radar|scatter|polarArea",
+                "control_use_regex": "true",
+                "required": "true"
+            },
+            {
+                "name": "mapping_value",
+                "label": "@@userview.sqlchartmenu.mapping.value@@",
+                "type": "selectbox",
+                "options_ajax_on_change": "id:datalistId",
+                "options_ajax": "[CONTEXT_PATH]/web/json/app[APP_PATH]/plugin/org.joget.marketplace.ChartJs/service?action=getDatalistColumns",
+                "options_ajax_method": "POST",
+                "control_field": "chartType",
+                "control_value": "pie",
+                "control_use_regex": "false",
+                "required": "true"
+            },
+            {
+                "name": "mapping_values",
+                "label": "@@userview.sqlchartmenu.mapping.values@@",
+                "type": "repeater",
+                "control_field": "chartType",
+                "control_value": "donut|bar|area|line|bubble|scatter|radar|polarArea",
+                "control_use_regex": "true",
+                "required": "false",
+                "fields": [
+                    {
+                        "name": "value",
+                        "label": "@@userview.sqlchartmenu.mapping.value@@",
+                        "type": "selectbox",
+                        "options_ajax_on_change": "id:datalistId",
+                        "options_ajax": "[CONTEXT_PATH]/web/json/app[APP_PATH]/plugin/org.joget.marketplace.ChartJs/service?action=getDatalistColumns",
+                        "options_ajax_method": "POST",
+                        "required": "True"
+                    },
+                    {
+                        "name": "showValueLabel",
+                        "label": "@@userview.sqlchartmenu.showValueLabel@@",
+                        "description": "@@org.joget.marketplace.userview.Chartjs.showValueLabel.desc@@",
+                        "type": "checkbox",
+                        "options": [
+                            {
+                                "value": "true",
+                                "label": ""
+                            }
+                        ]
+                    },
+                    {
+                        "name": "customization",
+                        "label": "@@org.joget.marketplace.userview.Chartjs.seriesCustomization@@",
+                        "type": "codeeditor",
+                        "mode": "json"
+                    }
+                ]
+            }
+
+        ]
+    },
+    {
+        "title": "@@userview.sqlchartmenu.chartOptions@@",
+        "properties": [
+            {
+                "name": "categoryAxisLabel",
+                "label": "@@userview.sqlchartmenu.x-axisLabel@@",
+                "type": "textfield",
+                "value": "@@userview.sqlchartmenu.category@@",
+                "control_field": "chartType",
+                "control_value": "bar|area|bubble|line|scatter",
+                "control_use_regex": "true",
+                "required": "true"
+            },
+
+            {
+                "name": "valueAxisLabel",
+                "label": "@@userview.sqlchartmenu.y-axisLabel@@",
+                "type": "textfield",
+                "value": "@@userview.sqlchartmenu.value@@",
+                "control_field": "chartType",
+                "control_value": "bar|area|bubble|line|scatter",
+                "control_use_regex": "true",
+                "required": "true"
+            },
+
+            {
+                "name": "showLegend",
+                "label": "@@org.joget.marketplace.userview.Chartjs.showLegend@@",
+                "type": "checkbox",
+                "options": [
+                    {
+                        "value": "true",
+                        "label": ""
+                    }
+                ],
+                "control_field": "chartType",
+                "control_value": "area|polarArea|bar|donut|line|pie|radar|scatter|bubble",
+                "control_use_regex": "true",
+                "value": "true"
+            },
+
+            {
+                "name": "showToolTip",
+                "label": "@@org.joget.marketplace.userview.Chartjs.showToolTip@@",
+                "type": "checkbox",
+                "options": [
+                    {
+                        "value": "true",
+                        "label": ""
+                    }
+                ],
+                "control_field": "chartType",
+                "control_value": "bar|line|donut|pie|polarArea|radar|bubble|scatter",
+                "control_use_regex": "true"
+            },
+            {
+                "name": "opaqueChart",
+                "label": "@@org.joget.marketplace.userview.Chartjs.opaqueChart@@",
+                "type": "checkbox",
+                "options": [
+                    {
+                        "value": "true",
+                        "label": ""
+                    }
+                ],
+                "control_field": "chartType",
+                "control_value": "bar|area|donut|pie|polarArea|radar|bubble",
+                "control_use_regex": "true"
+            },
+            {
+                "name": "enableAnimation",
+                "label": "@@org.joget.marketplace.userview.Chartjs.enableAnimation@@",
+                "type": "checkbox",
+                "options": [
+                    {
+                        "value": "true",
+                        "label": ""
+                    }
+                ],
+                "value": "true",
+                "control_field": "chartType",
+                "control_value": "line"
+            },
+            {
+                "name": "buttons",
+                "label": "@@org.joget.marketplace.userview.Chartjs.buttons@@",
+                "type": "checkbox",
+                "options": [
+                    {
+                        "value": "true",
+                        "label": ""
+                    }
+                ]
+            },
+
+            {
+                "name": "chartWidth",
+                "label": "@@userview.sqlchartmenu.chartWidth@@",
+                "type": "textfield",
+                "value": "90%",
+                "required": "true"
+            },
+            {
+                "name": "chartHeight",
+                "label": "@@userview.sqlchartmenu.chartHeight@@",
+                "type": "textfield",
+                "value": "600px",
+                "required": "true"
+            }
+
+        ]
+    }, 
+    {
+        "title": "@@userview.sqlchartmenu.advanced@@",
+        "properties": [
+            {
+                "label": "@@userview.sqlchartmenu.userviewKeyDataFilter@@",
+                "type": "header"
+            },
+            {
+                "name": "keyName",
+                "label": "@@userview.sqlchartmenu.userviewKeyName@@",
+                "type": "textfield"
+            },
+            {
+                "label": "@@userview.sqlchartmenu.ui@@",
+                "type": "header"
+            },
+            {
+                "name": "customHeader",
+                "label": "@@userview.sqlchartmenu.customHeader@@",
+                "type": "codeeditor",
+                "mode": "html"
+            },
+            {
+                "name": "customChartFooter",
+                "label": "@@userview.sqlchartmenu.customFooter@@",
+                "type": "codeeditor",
+                "mode": "html"
+            }
+        ]
+    }
+]
