@@ -57,12 +57,12 @@ public class ChartJs extends UserviewMenu implements PluginWebSupport {
 
     @Override
     public boolean isHomePageSupported() {
-        return true; // Can use as the first page of the userview
+        return true; 
     }
 
     @Override
     public String getDecoratedMenu() {
-        return null; // using default
+        return null; 
     }
 
     @Override
@@ -157,15 +157,13 @@ public class ChartJs extends UserviewMenu implements PluginWebSupport {
             libraryVersion = getPropertyString("libraryVersion");
         } else {
             // Default version if none specified
-            libraryVersion = "2.9.4";  // Example version for Chart.js, adjust based on your current Chart.js version
+            libraryVersion = "2.9.4";  
         }
         setProperty("libraryVersion", libraryVersion);
 
-        // Prepare and incorporate the chart using a FreeMarker template
         PluginManager pluginManager = (PluginManager) AppUtil.getApplicationContext().getBean("pluginManager");
         String content = pluginManager.getPluginFreeMarkerTemplate(freeMarkerModel, getClass().getName(), "/templates/Chartjs.ftl", MESSAGE_PATH);
 
-        // Combine the data list and chart content into the final HTML structure
         return "<div id=chartjs-body-" + getPropertyString("id") + " class=\"chart-body-content\">" + datalistContent + content + "</div>";
     }
 

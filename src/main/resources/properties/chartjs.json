@@ -312,6 +312,24 @@
                     }
                 ]
             },
+            {
+                "name": "buttonLabelPdf",
+                "label": "@@org.joget.marketplace.userview.Chartjs.exportPdf@@",
+                "type": "textfield",
+                "value": "Download PDF",
+                "control_field": "buttons",  
+                "control_value": "true",
+                "required": "true"
+            },
+            {
+                "name": "buttonLabelCsv",
+                "label": "@@org.joget.marketplace.userview.Chartjs.exportCsv@@",
+                "type": "textfield",
+                "value": "Download CSV",
+                "control_field": "buttons",
+                "control_value": "true",
+                "required": "true"
+            },
 
             {
                 "name": "chartWidth",

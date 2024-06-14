@@ -4,6 +4,7 @@
 <script src="${request.contextPath}/plugin/org.joget.marketplace.ChartJs/html2canvas.min.js"></script>
 
 <script src="${request.contextPath}/plugin/org.joget.marketplace.ChartJs/jspdf.umd.min.js"></script>
+<link rel="stylesheet" href="${request.contextPath}/plugin/org.joget.marketplace.ChartJs/custom.css">
 
 <div class="chartjs_menu_body">
 
@@ -21,8 +22,8 @@
 
     <#if element.properties.buttons! == "true">
     <div class="chartjs-buttons">
-        <button class="btn-download btn-pdf" onclick="downloadPDF()">Download PDF</button>
-        <button class="btn-download btn-csv" onclick="downloadCSV()">Download CSV</button>
+        <button class="btn-download btn-pdf" onclick="downloadPDF()">${element.properties.buttonLabelPdf!}</button>
+        <button class="btn-download btn-csv" onclick="downloadCSV()">${element.properties.buttonLabelCsv!}</button>
     </div>
     </#if>
 
@@ -31,47 +32,6 @@
     </div>
 
     <style type="text/css">
-
-          .chartjs-buttons {
-            display: flex;
-            justify-content: center;
-            margin-top: 1.2em; 
-            gap: 1.5em; 
-        }
-
-        .btn-download {
-            padding: 0.3em 0.5em; 
-            margin-bottom: 0.5em;
-            border: 0.125em solid transparent;
-            border-radius: 0.3125em;
-            font-size: 0.875em;
-            cursor: pointer;
-            transition: background-color 0.3s, box-shadow 0.3s, border-color 0.3s;
-        }
-
-        .btn-pdf {
-            background-color: #4CAF50;
-            color: white;
-        }
-
-        .btn-csv {
-            background-color: #2196F3;
-            color: white;
-        }
-
-        .btn-download:hover {
-            box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.2);
-            border-color: #000;
-        }
-
-        .btn-pdf:hover {
-            background-color: #45a049;
-        }
-
-        .btn-csv:hover {
-            background-color: #1e88e5;
-        }
-
 
         <#if element.properties.showTable! != "bottom" && element.properties.showTable! != "top">
         #chartjs-body-${element.properties.id!} .dataList .table-wrapper, #chartjs-datalist-${element.properties.id!} .pagebanner, #chartjs-datalist-${element.properties.id!} .pagelinks, #chartjs-datalist-${element.properties.id!} .exportlinks {
