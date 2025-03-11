@@ -72,7 +72,7 @@ public class ChartJs extends UserviewMenu implements PluginWebSupport {
 
     @Override
     public String getVersion() {
-        return "8.0.1";
+        return "8.0.2";
     }
 
     @Override
@@ -93,7 +93,6 @@ public class ChartJs extends UserviewMenu implements PluginWebSupport {
 
     @Override
     public String getPropertyOptions() {
-        LogUtil.info(getClass().getName(), "Fetching property options from: /properties/chartjs.json");
         return AppUtil.readPluginResource(getClassName(), "/properties/chartjs.json", null, true, MESSAGE_PATH);
 
     }
@@ -136,7 +135,6 @@ public class ChartJs extends UserviewMenu implements PluginWebSupport {
         // Retrieve and prepare the data list HTML content
         String datalistContent = "";
         datalistContent = getDatalistHTML();
-        LogUtil.info(getClass().getName(), "Datalist Content: " + datalistContent);
 
         // Fetch and prepare data for Chart.js
         DataList datalist = getDataList();
@@ -219,13 +217,11 @@ public class ChartJs extends UserviewMenu implements PluginWebSupport {
         model.put("properties", properties);
 
         String result = UserviewUtil.renderJspAsString("userview/plugin/datalist.jsp", model);
-        LogUtil.info(getClass().getName(), "Generated DataList HTML: " + result);
         return result;
     }
 
     protected double parseAndValidateData(String value) {
         if (value == null || value.trim().isEmpty()) {
-            LogUtil.info(getClass().getName(), "Received null or empty string, returning default value 0.0");
             return 0.0;  // Default value if data is null or empty
         }
         try {
@@ -265,7 +261,6 @@ public class ChartJs extends UserviewMenu implements PluginWebSupport {
                 for (Object row : binderdata) {
                     String label = getBinderFormattedValue(datalist, row, getPropertyString("mapping_x"));
                     labels.put(label);
-                    LogUtil.info(getClass().getName(), "Label added: " + label);
                 }
 
                 // Generate legends
@@ -275,7 +270,6 @@ public class ChartJs extends UserviewMenu implements PluginWebSupport {
                         legends.put(column.getLabel());
                     }
                 }
-                LogUtil.info(getClass().getName(), "Legends JSON: " + legends.toString());
                 setProperty("legends", legends.toString());
 
                 // Generate dynamic colors
@@ -291,7 +285,6 @@ public class ChartJs extends UserviewMenu implements PluginWebSupport {
                             String value = getBinderFormattedValue(datalist, row, column.getName());
                             Double validatedValue = parseAndValidateData(value);  // Use 'value' directly here
                             data.put(validatedValue);
-                            LogUtil.info(getClass().getName(), "Validated value added for column '" + column.getName() + "': " + validatedValue);
                         }
 
                         dataset.put("label", column.getLabel());
@@ -358,9 +351,6 @@ public class ChartJs extends UserviewMenu implements PluginWebSupport {
                     }
                 }
 
-                // Log the final JSON objects
-                LogUtil.info(getClass().getName(), "Datasets JSON: " + datasets.toString());
-                LogUtil.info(getClass().getName(), "Labels JSON: " + labels.toString());
 
                 // Set properties to be used in FTL
                 setProperty("datasets", datasets.toString());
