@@ -72,7 +72,7 @@ public class ChartJs extends UserviewMenu implements PluginWebSupport {
 
     @Override
     public String getVersion() {
-        return "8.0.2";
+        return "8.0.3";
     }
 
     @Override
